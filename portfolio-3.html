@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yogesh Ratnaparkhi | Financial Consultant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0b2545;
+    --navy-2:#13315c;
+    --gold:#c9a227;
+    --gold-soft:#f6edcf;
+    --bg:#f7f9fc;
+    --text:#27364b;
+    --muted:#66758a;
+    --white:#fff;
+    --radius:16px;
+    --shadow:0 10px 30px rgba(11,37,69,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Poppins','Noto Sans Devanagari',system-ui,-apple-system,'Segoe UI',sans-serif;
+    color:var(--text);background:var(--bg);line-height:1.7;
+  }
+  img,svg{max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .container{width:min(1140px,92%);margin-inline:auto}
+  section{padding:80px 0}
+  .section-head{text-align:center;max-width:680px;margin:0 auto 48px}
+  .section-head h2{font-size:clamp(1.6rem,3vw,2.2rem);color:var(--navy);line-height:1.3}
+  .section-head h2::after{content:"";display:block;width:60px;height:4px;background:var(--gold);border-radius:4px;margin:14px auto 0}
+  .section-head p{color:var(--muted);margin-top:14px}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:50;background:rgba(11,37,69,.97);backdrop-filter:blur(8px);box-shadow:0 2px 12px rgba(0,0,0,.2)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:10px;color:var(--white);font-weight:600;font-size:1.05rem}
+  .logo{width:40px;height:40px;border-radius:50%;background:var(--gold);color:var(--navy);display:grid;place-items:center;font-weight:700;position:relative;overflow:hidden;flex-shrink:0}
+  .logo img,.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%;display:block}
+  nav ul{list-style:none;display:flex;gap:22px;flex-wrap:wrap}
+  nav a{color:#dbe4f0;font-size:.92rem;transition:color .2s}
+  nav a:hover{color:var(--gold)}
+  .lang{display:flex;gap:6px;background:rgba(255,255,255,.08);padding:4px;border-radius:30px}
+  .lang button{border:0;background:transparent;color:#dbe4f0;padding:6px 14px;border-radius:30px;cursor:pointer;font:inherit;font-size:.85rem;transition:.2s}
+  .lang button:hover{color:var(--white)}
+  .lang button.active{background:var(--gold);color:var(--navy);font-weight:600}
+
+  /* Hero */
+  .hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 100%);color:var(--white);padding:90px 0 70px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,39,.35),transparent 70%)}
+  .hero-grid{display:grid;grid-template-columns:1.3fr .9fr;gap:40px;align-items:center;position:relative}
+  .tag{display:inline-block;background:rgba(201,162,39,.18);color:var(--gold);border:1px solid rgba(201,162,39,.5);padding:6px 16px;border-radius:30px;font-size:.85rem;margin-bottom:18px}
+  .hero h1{font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.2;margin-bottom:18px}
+  .hero h1 span{color:var(--gold)}
+  .hero p{color:#cdd8e8;max-width:560px;margin-bottom:28px}
+  .btns{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:13px 28px;border-radius:30px;font-weight:600;font-size:.95rem;transition:.25s;cursor:pointer;border:2px solid var(--gold)}
+  .btn-gold{background:var(--gold);color:var(--navy)}
+  .btn-gold:hover{background:#e0b92f;transform:translateY(-2px)}
+  .btn-line{color:var(--white)}
+  .btn-line:hover{background:var(--gold);color:var(--navy)}
+  .profile-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:24px;padding:36px 28px;text-align:center}
+  .avatar{width:130px;height:130px;margin:0 auto 18px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#e8cf74);color:var(--navy);display:grid;place-items:center;font-size:2.8rem;font-weight:700;border:5px solid rgba(255,255,255,.25);position:relative;overflow:hidden}
+  .profile-card h3{font-size:1.25rem}
+  .profile-card small{color:var(--gold)}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+  .stat b{display:block;font-size:1.6rem;color:var(--gold);line-height:1.2}
+  .stat span{font-size:.72rem;color:#cdd8e8;display:block;line-height:1.3;margin-top:4px}
+
+  /* About */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+  .about-grid h2{font-size:clamp(1.6rem,3vw,2.1rem);color:var(--navy);margin-bottom:16px;line-height:1.3}
+  .about-grid p{margin-bottom:14px;color:var(--muted)}
+  .checks{list-style:none;background:var(--white);padding:30px;border-radius:var(--radius);box-shadow:var(--shadow);border-left:5px solid var(--gold)}
+  .checks li{padding:10px 0 10px 34px;position:relative;font-weight:500;color:var(--navy);border-bottom:1px dashed #e3e8ef}
+  .checks li:last-child{border:0}
+  .checks li::before{content:"✓";position:absolute;left:0;top:10px;width:22px;height:22px;border-radius:50%;background:var(--gold);color:var(--navy);display:grid;place-items:center;font-size:.8rem;font-weight:700}
+
+  /* Cards */
+  .grid{display:grid;gap:24px}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .card{background:var(--white);border-radius:var(--radius);padding:30px 26px;box-shadow:var(--shadow);transition:.3s;border-top:4px solid transparent}
+  .card:hover{transform:translateY(-6px);border-top-color:var(--gold)}
+  .icon{width:58px;height:58px;border-radius:14px;background:var(--gold-soft);display:grid;place-items:center;font-size:1.7rem;margin-bottom:18px}
+  .card h3{color:var(--navy);font-size:1.1rem;margin-bottom:10px;line-height:1.4}
+  .card p{color:var(--muted);font-size:.92rem}
+  .card.featured{background:linear-gradient(160deg,var(--navy),var(--navy-2));color:var(--white)}
+  .card.featured h3{color:var(--gold)}
+  .card.featured p{color:#cdd8e8}
+  .card.featured .icon{background:rgba(201,162,39,.2)}
+  .alt{background:#eef2f8}
+
+  /* Goals timeline-ish */
+  .goal-badge{display:inline-block;font-size:.75rem;font-weight:600;color:var(--navy);background:var(--gold-soft);padding:4px 12px;border-radius:20px;margin-bottom:12px}
+
+  /* Clients */
+  .clients{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:var(--white);text-align:center}
+  .clients h2{font-size:clamp(1.6rem,3vw,2.2rem);color:var(--gold);margin-bottom:14px}
+  .clients p{max-width:700px;margin:0 auto 28px;color:#d4deec;font-size:1.05rem}
+  .stars{color:var(--gold);font-size:1.6rem;letter-spacing:6px;margin-bottom:10px}
+
+  /* Contact */
+  .contact-box{background:var(--white);border-radius:24px;box-shadow:var(--shadow);padding:44px;display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+  .contact-box h2{color:var(--navy);font-size:clamp(1.5rem,3vw,2rem);line-height:1.3;margin-bottom:10px}
+  .contact-box p{color:var(--muted)}
+  .info{display:grid;gap:16px}
+  .info div{display:flex;gap:14px;align-items:center;background:var(--bg);padding:14px 18px;border-radius:12px}
+  .info .ic{width:42px;height:42px;border-radius:50%;background:var(--gold);display:grid;place-items:center;font-size:1.1rem;flex-shrink:0}
+  .info small{display:block;color:var(--muted);font-size:.75rem;line-height:1.2}
+  .info b{color:var(--navy);font-weight:600}
+
+  footer{background:var(--navy);color:#b7c4d8;padding:34px 0;font-size:.82rem;text-align:center}
+  footer .disc{max-width:860px;margin:0 auto 16px;line-height:1.6;color:#93a3bb}
+  footer .copy{color:var(--gold)}
+
+  /* Responsive */
+  @media(max-width:960px){
+    .g4{grid-template-columns:repeat(2,1fr)}
+    .g3{grid-template-columns:1fr}
+    .hero-grid,.about-grid,.contact-box{grid-template-columns:1fr}
+    nav{order:3;width:100%}
+    nav ul{justify-content:center;gap:16px}
+  }
+  @media(max-width:560px){
+    section{padding:56px 0}
+    .g4{grid-template-columns:1fr}
+    .contact-box{padding:28px 22px}
+    .nav{justify-content:center}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#home" class="brand"><span class="logo">YR<img src="MainLogo.jpg" alt="Yogesh Ratnaparkhi" onerror="this.remove()"></span><span data-i18n="brand">SATEJ INVESTMENTS</span></a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#home" data-i18n="nav_home">Home</a></li>
+        <li><a href="#about" data-i18n="nav_about">About</a></li>
+        <li><a href="#services" data-i18n="nav_services">Services</a></li>
+        <li><a href="#goals" data-i18n="nav_goals">Goals</a></li>
+        <li><a href="#insurance" data-i18n="nav_insurance">Insurance</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button data-lang="en" class="active">English</button>
+      <button data-lang="hi">हिंदी</button>
+      <button data-lang="mr">मराठी</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <span class="tag" data-i18n="hero_tag">Financial Consultant</span>
+      <h1 data-i18n="hero_h">Building Your Wealth, One Goal at a Time</h1>
+      <p data-i18n="hero_p">With 13 years in mutual funds and 20 years in insurance consulting, I help families plan, invest and protect — from buying a car to a secure retirement.</p>
+      <div class="btns">
+        <a href="#contact" class="btn btn-gold" data-i18n="cta1">Book a Free Consultation</a>
+        <a href="#services" class="btn btn-line" data-i18n="cta2">Explore Services</a>
+      </div>
+    </div>
+    <div class="profile-card">
+      <div class="avatar">YR<img src="YRImg.png" alt="Yogesh Kamalakar Ratnaparkhi" onerror="this.remove()"></div>
+      <h3 data-i18n="person">Yogesh Kamalakar Ratnaparkhi</h3>
+      <small data-i18n="role">Financial Consultant</small>
+      <div class="stats">
+        <div class="stat"><b>20+</b><span data-i18n="st1">Years in Insurance Consulting</span></div>
+        <div class="stat"><b>13+</b><span data-i18n="st2">Years in Mutual Funds</span></div>
+        <div class="stat"><b>NJ</b><span data-i18n="st3">India's Largest Distributor Company</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container about-grid">
+    <div>
+      <h2 data-i18n="about_h">About Me</h2>
+      <p data-i18n="about_p1">Yogesh Ratnaparkhi is a trusted financial consultant working with NJ, India's largest distributor company. With 13 years of experience in mutual funds and 20 years of consulting in insurance, he has guided families and individuals toward financial confidence.</p>
+      <p data-i18n="about_p2">His expertise lies in wealth creation. Whether the goal is long-term, like retirement planning, or short-term, like buying a car, he designs simple, practical strategies that fit each client's income, needs and risk comfort.</p>
+    </div>
+    <ul class="checks">
+      <li data-i18n="ab1">Goal-based financial planning</li>
+      <li data-i18n="ab2">Personalised strategies for every client</li>
+      <li data-i18n="ab3">Clear, honest and jargon-free advice</li>
+      <li data-i18n="ab4">Mutual funds and insurance under one roof</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="alt">
+  <div class="container">
+    <div class="section-head">
+      <h2 data-i18n="sv_h">Investment Plans &amp; Services</h2>
+      <p data-i18n="sv_sub">Smart ways to invest, withdraw and grow your money.</p>
+    </div>
+    <div class="grid g4">
+      <div class="card">
+        <div class="icon">📈</div>
+        <h3 data-i18n="sip_h">SIP – Systematic Investment Plan</h3>
+        <p data-i18n="sip_p">Invest a fixed amount regularly in mutual funds. Build discipline, benefit from rupee-cost averaging and let compounding grow your wealth over time.</p>
+      </div>
+      <div class="card">
+        <div class="icon">💰</div>
+        <h3 data-i18n="swp_h">SWP – Systematic Withdrawal Plan</h3>
+        <p data-i18n="swp_p">Withdraw a fixed amount at regular intervals from your investment — ideal for a steady monthly income during retirement or for regular expenses.</p>
+      </div>
+      <div class="card">
+        <div class="icon">💼</div>
+        <h3 data-i18n="ls_h">Lumpsum Investment</h3>
+        <p data-i18n="ls_p">Putting a large or single amount of money into financial assets at once, for security and faster wealth creation.</p>
+      </div>
+      <div class="card featured">
+        <div class="icon">🏆</div>
+        <h3 data-i18n="wc_h">Wealth Creation</h3>
+        <p data-i18n="wc_p">Our core focus. A customised roadmap that combines the right mix of investments to grow your wealth steadily and achieve your life goals.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GOALS -->
+<section id="goals">
+  <div class="container">
+    <div class="section-head">
+      <h2 data-i18n="gl_h">Plans for Every Goal</h2>
+      <p data-i18n="gl_sub">From a new car to a comfortable retirement, every goal deserves a plan.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card">
+        <div class="icon">🚗</div>
+        <span class="goal-badge" data-i18n="g1_b">Up to 3 years</span>
+        <h3 data-i18n="g1_h">Short-Term Goals</h3>
+        <p data-i18n="g1_p">Buying a car, a holiday, an emergency fund or a gadget — plans that keep your money safe and accessible.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🎓</div>
+        <span class="goal-badge" data-i18n="g2_b">3 to 7 years</span>
+        <h3 data-i18n="g2_h">Medium-Term Goals</h3>
+        <p data-i18n="g2_p">Children's education, a home down payment or a wedding — balanced strategies for 3 to 7 years.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🌅</div>
+        <span class="goal-badge" data-i18n="g3_b">7+ years</span>
+        <h3 data-i18n="g3_h">Long-Term Goals</h3>
+        <p data-i18n="g3_p">Retirement planning and lasting wealth creation — disciplined investing that grows with time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSURANCE -->
+<section id="insurance" class="alt">
+  <div class="container">
+    <div class="section-head">
+      <h2 data-i18n="in_h">Insurance Services</h2>
+      <p data-i18n="in_sub">Protect what matters most while you build your future.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card">
+        <div class="icon">🛡️</div>
+        <h3 data-i18n="i1_h">Life Insurance</h3>
+        <p data-i18n="i1_p">Secure your family's future and financial stability with term, endowment and other life cover options.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🏠</div>
+        <h3 data-i18n="i2_h">General Insurance</h3>
+        <p data-i18n="i2_p">Protection for your vehicle, home, travel and business against unexpected losses.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🏥</div>
+        <h3 data-i18n="i3_h">Health Insurance (Mediclaim)</h3>
+        <p data-i18n="i3_p">Cover medical expenses and hospitalisation so a health emergency never disturbs your savings.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="container">
+    <div class="section-head">
+      <h2 data-i18n="why_h">Why You Should Consult Me?</h2>
+    </div>
+    <div class="grid g4">
+      <div class="card"><div class="icon">🎯</div><h3 data-i18n="w1_h">Deep Experience</h3><p data-i18n="w1_p">13 years in mutual funds and 20 years in insurance consulting.</p></div>
+      <div class="card"><div class="icon">🤝</div><h3 data-i18n="w2_h">Trusted NJ Association</h3><p data-i18n="w2_p">Backed by India's largest distributor company.</p></div>
+      <div class="card"><div class="icon">🧭</div><h3 data-i18n="w3_h">Personalised Guidance</h3><p data-i18n="w3_p">Plans built around your goals, not a one-size-fits-all product.</p></div>
+      <div class="card"><div class="icon">😊</div><h3 data-i18n="w4_h">500+ Happy Clients</h3><p data-i18n="w4_p">Many clients have created wealth with my advice.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section class="clients">
+  <div class="container">
+    <div class="stars">★★★★★</div>
+    <h2 data-i18n="cl_h">Clients Who Built Wealth</h2>
+    <p data-i18n="cl_p">Many happy clients have grown their wealth by following the best financial advice. Your goal could be next.</p>
+    <a href="#contact" class="btn btn-gold" data-i18n="cta1">Book a Free Consultation</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-box">
+      <div>
+        <h2 data-i18n="ct_h">Ready to start your financial journey?</h2>
+        <p data-i18n="ct_p">Book a free consultation and let's plan your goals together.</p>
+      </div>
+      <div class="info">
+        <!-- Replace the placeholder details below with real contact information -->
+        <div><span class="ic">📞</span><span><small data-i18n="c_phone">Phone</small><b>+91 98506 24616</b></span></div>
+        <div><span class="ic">✉️</span><span><small data-i18n="c_email">Email</small><b>ratnaparkhiyogesh@gmail.com</b></span></div>
+        <div><span class="ic">📍</span><span><small data-i18n="c_loc">Location</small><b>Nashik, Maharashtra, India</b></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p class="disc" data-i18n="disc">Mutual fund investments are subject to market risks. Please read all scheme-related documents carefully before investing. Past performance is not indicative of future returns. Insurance is a subject matter of solicitation.</p>
+    <p class="copy">© <span id="yr"></span> <span data-i18n="brand">SATEJ INVESTMENTS</span>. <span data-i18n="rights">All rights reserved.</span></p>
+  </div>
+</footer>
+
+<script>
+const T = {
+  en: {
+    title:"Yogesh Ratnaparkhi | Financial Consultant",
+    brand:"SATEJ INVESTMENTS", person:"Yogesh Kamalakar Ratnaparkhi", role:"Financial Consultant",
+    nav_home:"Home", nav_about:"About", nav_services:"Services", nav_goals:"Goals", nav_insurance:"Insurance", nav_contact:"Contact",
+    hero_tag:"Financial Consultant",
+    hero_h:"Building Your Wealth, One Goal at a Time",
+    hero_p:"With 13 years in mutual funds and 20 years in insurance consulting, I help families plan, invest and protect — from buying a car to a secure retirement.",
+    cta1:"Book a Free Consultation", cta2:"Explore Services",
+    st1:"Years in Insurance Consulting", st2:"Years in Mutual Funds", st3:"India's Largest Distributor Company",
+    about_h:"About Me",
+    about_p1:"Yogesh Ratnaparkhi is a trusted financial consultant working with NJ, India's largest distributor company. With 13 years of experience in mutual funds and 20 years of consulting in insurance, he has guided families and individuals toward financial confidence.",
+    about_p2:"His expertise lies in wealth creation. Whether the goal is long-term, like retirement planning, or short-term, like buying a car, he designs simple, practical strategies that fit each client's income, needs and risk comfort.",
+    ab1:"Goal-based financial planning", ab2:"Personalised strategies for every client", ab3:"Clear, honest and jargon-free advice", ab4:"Mutual funds and insurance under one roof",
+    sv_h:"Investment Plans & Services", sv_sub:"Smart ways to invest, withdraw and grow your money.",
+    sip_h:"SIP – Systematic Investment Plan", sip_p:"Invest a fixed amount regularly in mutual funds. Build discipline, benefit from rupee-cost averaging and let compounding grow your wealth over time.",
+    swp_h:"SWP – Systematic Withdrawal Plan", swp_p:"Withdraw a fixed amount at regular intervals from your investment — ideal for a steady monthly income during retirement or for regular expenses.",
+    ls_h:"Lumpsum Investment", ls_p:"Putting a large or single amount of money into financial assets at once, for security and faster wealth creation.",
+    wc_h:"Wealth Creation", wc_p:"Our core focus. A customised roadmap that combines the right mix of investments to grow your wealth steadily and achieve your life goals.",
+    gl_h:"Plans for Every Goal", gl_sub:"From a new car to a comfortable retirement, every goal deserves a plan.",
+    g1_b:"Up to 3 years", g1_h:"Short-Term Goals", g1_p:"Buying a car, a holiday, an emergency fund or a gadget — plans that keep your money safe and accessible.",
+    g2_b:"3 to 7 years", g2_h:"Medium-Term Goals", g2_p:"Children's education, a home down payment or a wedding — balanced strategies for 3 to 7 years.",
+    g3_b:"7+ years", g3_h:"Long-Term Goals", g3_p:"Retirement planning and lasting wealth creation — disciplined investing that grows with time.",
+    in_h:"Insurance Services", in_sub:"Protect what matters most while you build your future.",
+    i1_h:"Life Insurance", i1_p:"Secure your family's future and financial stability with term, endowment and other life cover options.",
+    i2_h:"General Insurance", i2_p:"Protection for your vehicle, home, travel and business against unexpected losses.",
+    i3_h:"Health Insurance (Mediclaim)", i3_p:"Cover medical expenses and hospitalisation so a health emergency never disturbs your savings.",
+    why_h:"Why You Should Consult Me?",
+    w1_h:"Deep Experience", w1_p:"13 years in mutual funds and 20 years in insurance consulting.",
+    w2_h:"Trusted NJ Association", w2_p:"Backed by India's largest distributor company.",
+    w3_h:"Personalised Guidance", w3_p:"Plans built around your goals, not a one-size-fits-all product.",
+    w4_h:"500+ Happy Clients", w4_p:"Many clients have created wealth with my advice.",
+    cl_h:"Clients Who Built Wealth", cl_p:"Many happy clients have grown their wealth by following the best financial advice. Your goal could be next.",
+    ct_h:"Ready to start your financial journey?", ct_p:"Book a free consultation and let's plan your goals together.",
+    c_phone:"Phone", c_email:"Email", c_loc:"Location",
+    disc:"Mutual fund investments are subject to market risks. Please read all scheme-related documents carefully before investing. Past performance is not indicative of future returns. Insurance is a subject matter of solicitation.",
+    rights:"All rights reserved."
+  },
+  hi: {
+    title:"योगेश रत्नपारखी | वित्तीय सलाहकार",
+    brand:"SATEJ INVESTMENTS", person:"योगेश कमलाकर रत्नपारखी", role:"वित्तीय सलाहकार",
+    nav_home:"होम", nav_about:"परिचय", nav_services:"सेवाएँ", nav_goals:"लक्ष्य", nav_insurance:"बीमा", nav_contact:"संपर्क",
+    hero_tag:"वित्तीय सलाहकार",
+    hero_h:"हर लक्ष्य के साथ, आपकी संपत्ति का निर्माण",
+    hero_p:"म्यूचुअल फंड में 13 वर्षों और बीमा परामर्श में 20 वर्षों के अनुभव के साथ, मैं परिवारों को योजना बनाने, निवेश करने और सुरक्षित रहने में मदद करता हूँ — कार खरीदने से लेकर सुरक्षित सेवानिवृत्ति तक।",
+    cta1:"निःशुल्क परामर्श बुक करें", cta2:"सेवाएँ देखें",
+    st1:"वर्ष बीमा परामर्श में", st2:"वर्ष म्यूचुअल फंड में", st3:"भारत की सबसे बड़ी वितरक कंपनी",
+    about_h:"मेरे बारे में",
+    about_p1:"योगेश रत्नपारखी एक विश्वसनीय वित्तीय सलाहकार हैं जो भारत की सबसे बड़ी वितरक कंपनी NJ के साथ कार्यरत हैं। म्यूचुअल फंड में 13 वर्षों और बीमा परामर्श में 20 वर्षों के अनुभव के साथ उन्होंने कई परिवारों और व्यक्तियों को आर्थिक आत्मविश्वास की ओर मार्गदर्शन दिया है।",
+    about_p2:"उनकी विशेषज्ञता संपत्ति निर्माण (वेल्थ क्रिएशन) में है। चाहे लक्ष्य सेवानिवृत्ति योजना जैसा दीर्घकालिक हो या कार खरीदने जैसा अल्पकालिक, वे हर ग्राहक की आय, ज़रूरत और जोखिम सहनशीलता के अनुसार सरल और व्यावहारिक रणनीतियाँ बनाते हैं।",
+    ab1:"लक्ष्य-आधारित वित्तीय योजना", ab2:"हर ग्राहक के लिए व्यक्तिगत रणनीतियाँ", ab3:"स्पष्ट, ईमानदार और सरल भाषा में सलाह", ab4:"म्यूचुअल फंड और बीमा एक ही जगह",
+    sv_h:"निवेश योजनाएँ और सेवाएँ", sv_sub:"निवेश करने, निकासी करने और अपना धन बढ़ाने के स्मार्ट तरीके।",
+    sip_h:"SIP – सिस्टमैटिक इन्वेस्टमेंट प्लान", sip_p:"म्यूचुअल फंड में नियमित रूप से एक निश्चित राशि निवेश करें। अनुशासन बनाएँ, रुपी-कॉस्ट एवरेजिंग का लाभ पाएँ और चक्रवृद्धि से समय के साथ अपनी संपत्ति बढ़ाएँ।",
+    swp_h:"SWP – सिस्टमैटिक विदड्रॉअल प्लान", swp_p:"अपने निवेश से नियमित अंतराल पर एक निश्चित राशि निकालें — सेवानिवृत्ति में हर महीने स्थिर आय या नियमित खर्चों के लिए उपयुक्त।",
+    ls_h:"एकमुश्त निवेश (लंपसम)", ls_p:"एक बड़ी या एकमुश्त राशि को एक साथ वित्तीय संपत्तियों में लगाएँ, ताकि संपत्ति का निर्माण तेज़ी से और सुरक्षित रूप से हो सके।",
+    wc_h:"वेल्थ क्रिएशन (संपत्ति निर्माण)", wc_p:"हमारा मुख्य फोकस। निवेश के सही मिश्रण से बनी आपकी अपनी रोडमैप, जो आपकी संपत्ति को स्थिर रूप से बढ़ाए और जीवन के लक्ष्य पूरे करे।",
+    gl_h:"हर लक्ष्य के लिए योजना", gl_sub:"नई कार से लेकर आरामदायक सेवानिवृत्ति तक, हर लक्ष्य के लिए एक योजना ज़रूरी है।",
+    g1_b:"3 वर्ष तक", g1_h:"अल्पकालिक लक्ष्य", g1_p:"कार खरीदना, छुट्टियाँ, आपातकालीन फंड या गैजेट — ऐसी योजनाएँ जो आपके पैसे को सुरक्षित और सुलभ रखें।",
+    g2_b:"3 से 7 वर्ष", g2_h:"मध्यम अवधि के लक्ष्य", g2_p:"बच्चों की शिक्षा, घर की डाउन पेमेंट या शादी — 3 से 7 वर्षों के लिए संतुलित रणनीतियाँ।",
+    g3_b:"7+ वर्ष", g3_h:"दीर्घकालिक लक्ष्य", g3_p:"सेवानिवृत्ति योजना और स्थायी संपत्ति निर्माण — अनुशासित निवेश जो समय के साथ बढ़ता है।",
+    in_h:"बीमा सेवाएँ", in_sub:"जो सबसे ज़रूरी है उसे सुरक्षित रखें, जबकि आप अपना भविष्य बनाते हैं।",
+    i1_h:"जीवन बीमा", i1_p:"टर्म, एंडोमेंट और अन्य जीवन बीमा विकल्पों से अपने परिवार का भविष्य और आर्थिक स्थिरता सुरक्षित करें।",
+    i2_h:"सामान्य बीमा", i2_p:"आपके वाहन, घर, यात्रा और व्यवसाय को अप्रत्याशित नुकसान से सुरक्षा।",
+    i3_h:"स्वास्थ्य बीमा (मेडिक्लेम)", i3_p:"चिकित्सा खर्च और अस्पताल में भर्ती होने की लागत को कवर करें ताकि स्वास्थ्य आपातकाल आपकी बचत को प्रभावित न करे।",
+    why_h:"आपको मुझसे परामर्श क्यों लेना चाहिए?",
+    w1_h:"गहरा अनुभव", w1_p:"म्यूचुअल फंड में 13 वर्ष और बीमा परामर्श में 20 वर्ष।",
+    w2_h:"NJ से विश्वसनीय जुड़ाव", w2_p:"भारत की सबसे बड़ी वितरक कंपनी का समर्थन।",
+    w3_h:"व्यक्तिगत मार्गदर्शन", w3_p:"आपके लक्ष्यों के आधार पर बनी योजनाएँ, सबके लिए एक जैसा प्रोडक्ट नहीं।",
+    w4_h:"500+ संतुष्ट ग्राहक", w4_p:"कई ग्राहकों ने मेरी सलाह से संपत्ति बनाई है।",
+    cl_h:"जिन ग्राहकों ने संपत्ति बनाई", cl_p:"कई संतुष्ट ग्राहकों ने बेहतरीन वित्तीय सलाह का पालन करके अपनी संपत्ति में वृद्धि की है। अगला लक्ष्य आपका हो सकता है।",
+    ct_h:"अपनी वित्तीय यात्रा शुरू करने के लिए तैयार हैं?", ct_p:"निःशुल्क परामर्श बुक करें और साथ मिलकर अपने लक्ष्यों की योजना बनाएँ।",
+    c_phone:"फ़ोन", c_email:"ईमेल", c_loc:"स्थान",
+    disc:"म्यूचुअल फंड निवेश बाज़ार जोखिमों के अधीन हैं। निवेश करने से पहले योजना से संबंधित सभी दस्तावेज़ ध्यानपूर्वक पढ़ें। पिछला प्रदर्शन भविष्य के रिटर्न की गारंटी नहीं है। बीमा अभिवाचन का विषय है।",
+    rights:"सर्वाधिकार सुरक्षित।"
+  },
+  mr: {
+    title:"योगेश रत्नपारखी | आर्थिक सल्लागार",
+    brand:"SATEJ INVESTMENTS", person:"योगेश कमलाकर रत्नपारखी", role:"आर्थिक सल्लागार",
+    nav_home:"मुख्यपृष्ठ", nav_about:"परिचय", nav_services:"सेवा", nav_goals:"ध्येये", nav_insurance:"विमा", nav_contact:"संपर्क",
+    hero_tag:"आर्थिक सल्लागार",
+    hero_h:"प्रत्येक ध्येयासोबत, तुमची संपत्ती घडवूया",
+    hero_p:"म्युच्युअल फंडातील 13 वर्षांचा आणि विमा सल्लागार म्हणून 20 वर्षांचा अनुभव घेऊन, मी कुटुंबांना नियोजन, गुंतवणूक आणि सुरक्षितता यात मदत करतो — कार खरेदीपासून सुरक्षित निवृत्तीपर्यंत.",
+    cta1:"मोफत सल्ला बुक करा", cta2:"सेवा पहा",
+    st1:"वर्षे विमा सल्लागार म्हणून", st2:"वर्षे म्युच्युअल फंडात", st3:"भारतातील सर्वात मोठी वितरक कंपनी",
+    about_h:"माझ्याबद्दल",
+    about_p1:"योगेश रत्नपारखी हे NJ या भारतातील सर्वात मोठ्या वितरक कंपनीसोबत कार्यरत असलेले विश्वासू आर्थिक सल्लागार आहेत. म्युच्युअल फंडातील 13 वर्षांचा आणि विमा सल्लागार म्हणून 20 वर्षांचा अनुभव असलेल्या त्यांनी अनेक कुटुंबांना आणि व्यक्तींना आर्थिक आत्मविश्वासाकडे नेले आहे.",
+    about_p2:"संपत्ती निर्माण (वेल्थ क्रिएशन) हे त्यांचे विशेष कौशल्य आहे. ध्येय निवृत्ती नियोजनासारखे दीर्घकालीन असो किंवा कार खरेदीसारखे अल्पकालीन, ते प्रत्येक ग्राहकाचे उत्पन्न, गरजा आणि जोखीम सहनशीलता लक्षात घेऊन सोप्या व व्यावहारिक रणनीती तयार करतात.",
+    ab1:"ध्येयावर आधारित आर्थिक नियोजन", ab2:"प्रत्येक ग्राहकासाठी वैयक्तिक रणनीती", ab3:"स्पष्ट, प्रामाणिक आणि सोप्या भाषेतील सल्ला", ab4:"म्युच्युअल फंड आणि विमा एकाच ठिकाणी",
+    sv_h:"गुंतवणूक योजना आणि सेवा", sv_sub:"गुंतवणूक करण्याचे, पैसे काढण्याचे आणि संपत्ती वाढवण्याचे स्मार्ट मार्ग.",
+    sip_h:"SIP – सिस्टिमॅटिक इन्व्हेस्टमेंट प्लॅन", sip_p:"म्युच्युअल फंडात नियमितपणे ठराविक रक्कम गुंतवा. शिस्त लावा, रुपी-कॉस्ट अॅव्हरेजिंगचा फायदा मिळवा आणि चक्रवाढीने कालांतराने संपत्ती वाढवा.",
+    swp_h:"SWP – सिस्टिमॅटिक विथड्रॉअल प्लॅन", swp_p:"तुमच्या गुंतवणुकीतून ठराविक अंतराने ठराविक रक्कम काढा — निवृत्तीनंतर दरमहा स्थिर उत्पन्नासाठी किंवा नियमित खर्चांसाठी योग्य.",
+    ls_h:"एकरकमी गुंतवणूक (लंपसम)", ls_p:"मोठी किंवा एकच रक्कम एकाच वेळी आर्थिक मालमत्तेत गुंतवा, जेणेकरून संपत्ती निर्माण जलद आणि सुरक्षित होईल.",
+    wc_h:"वेल्थ क्रिएशन (संपत्ती निर्माण)", wc_p:"आमचे मुख्य लक्ष. गुंतवणुकीच्या योग्य मिश्रणातून तयार केलेला तुमचा खास आराखडा, जो तुमची संपत्ती स्थिरपणे वाढवतो आणि जीवनातील ध्येये साध्य करतो.",
+    gl_h:"प्रत्येक ध्येयासाठी योजना", gl_sub:"नवीन कारपासून आरामदायी निवृत्तीपर्यंत, प्रत्येक ध्येयासाठी एक योजना हवीच.",
+    g1_b:"3 वर्षांपर्यंत", g1_h:"अल्पकालीन ध्येये", g1_p:"कार खरेदी, सहल, आपत्कालीन निधी किंवा गॅजेट — तुमचे पैसे सुरक्षित आणि सहज उपलब्ध ठेवणाऱ्या योजना.",
+    g2_b:"3 ते 7 वर्षे", g2_h:"मध्यम कालावधीची ध्येये", g2_p:"मुलांचे शिक्षण, घराचे डाउन पेमेंट किंवा लग्न — 3 ते 7 वर्षांसाठी संतुलित रणनीती.",
+    g3_b:"7+ वर्षे", g3_h:"दीर्घकालीन ध्येये", g3_p:"निवृत्ती नियोजन आणि चिरस्थायी संपत्ती निर्माण — काळानुसार वाढणारी शिस्तबद्ध गुंतवणूक.",
+    in_h:"विमा सेवा", in_sub:"भविष्य घडवताना जे सर्वात महत्त्वाचे आहे त्याचे संरक्षण करा.",
+    i1_h:"जीवन विमा", i1_p:"टर्म, एंडोमेंट आणि इतर जीवन विमा पर्यायांद्वारे तुमच्या कुटुंबाचे भविष्य आणि आर्थिक स्थैर्य सुरक्षित करा.",
+    i2_h:"सामान्य विमा", i2_p:"तुमचे वाहन, घर, प्रवास आणि व्यवसाय यांना अनपेक्षित नुकसानीपासून संरक्षण.",
+    i3_h:"आरोग्य विमा (मेडिक्लेम)", i3_p:"वैद्यकीय खर्च आणि रुग्णालयातील दाखल होण्याचा खर्च कव्हर करा, जेणेकरून आरोग्य आणीबाणीमुळे तुमच्या बचतीवर परिणाम होणार नाही.",
+    why_h:"तुम्ही माझा सल्ला का घ्यावा?",
+    w1_h:"सखोल अनुभव", w1_p:"म्युच्युअल फंडात 13 वर्षे आणि विमा सल्लागार म्हणून 20 वर्षे.",
+    w2_h:"NJ शी विश्वासार्ह संलग्नता", w2_p:"भारतातील सर्वात मोठ्या वितरक कंपनीचा पाठिंबा.",
+    w3_h:"वैयक्तिक मार्गदर्शन", w3_p:"तुमच्या ध्येयांवर आधारित योजना, सर्वांसाठी एकच उत्पादन नव्हे.",
+    w4_h:"500+ समाधानी ग्राहक", w4_p:"अनेक ग्राहकांनी माझ्या सल्ल्याने संपत्ती निर्माण केली आहे.",
+    cl_h:"ज्यांनी संपत्ती घडवली ते ग्राहक", cl_p:"अनेक समाधानी ग्राहकांनी सर्वोत्तम आर्थिक सल्ल्याचे पालन करून आपली संपत्ती वाढवली आहे. पुढचे ध्येय तुमचे असू शकते.",
+    ct_h:"तुमचा आर्थिक प्रवास सुरू करण्यास तयार आहात?", ct_p:"मोफत सल्ला बुक करा आणि तुमच्या ध्येयांचे नियोजन एकत्र करूया.",
+    c_phone:"फोन", c_email:"ईमेल", c_loc:"ठिकाण",
+    disc:"म्युच्युअल फंड गुंतवणूक बाजारातील जोखमींच्या अधीन आहे. गुंतवणूक करण्यापूर्वी योजनेशी संबंधित सर्व कागदपत्रे काळजीपूर्वक वाचा. पूर्वीची कामगिरी भविष्यातील परताव्याची हमी नाही. विमा हा विनंतीचा विषय आहे.",
+    rights:"सर्व हक्क राखीव."
+  }
+};
+
+function setLang(lang){
+  if(!T[lang]) lang = 'en';
+  document.documentElement.lang = lang;
+  document.title = T[lang].title;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    el.textContent = T[lang][k] ?? T.en[k] ?? el.textContent;
+  });
+  document.querySelectorAll('.lang button').forEach(b=>{
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+  try{ localStorage.setItem('yr_lang', lang); }catch(e){}
+}
+
+document.querySelectorAll('.lang button').forEach(b=>{
+  b.addEventListener('click', ()=> setLang(b.dataset.lang));
+});
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* English is the default; a visitor's last choice is remembered.
+   Always apply the language on load so the page text and the dictionary never drift apart. */
+let saved = 'en';
+try{ saved = localStorage.getItem('yr_lang') || 'en'; }catch(e){}
+setLang(saved);
+</script>
+</body>
+</html>
